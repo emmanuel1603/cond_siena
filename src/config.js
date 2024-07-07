@@ -9,9 +9,11 @@ module.exports = {
     },
 
     mysql:{
-        host:process.env.MYSQL_HOST || 'localhost',
-        user:process.env.MYSQL_USER || 'root',
-        password:process.env.MYSQL_PASSWORD || '',
-        database:process.env.MYSQL_DB || 'cond_siena',
+        host:'roundhouse.proxy.rlwy.net',
+        port:43244,
+        user:'root',
+        password:'slKCIsHIbZrxxGOZnUhufWvrnjfbDgpo',
+        database:'railway',
+        connectTimeout: 20000 // increase the timeout to 10 seconds
 }    
 }

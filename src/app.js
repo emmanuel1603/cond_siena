@@ -26,6 +26,6 @@ app.use('/api/auth' , auth);
 app.use('/api/gastos' , gastos);
 app.use('/api/recibos' , recibos);
 app.use('/api/unidades' , unidades);
-app.use(cors({origin:whiteList}));
+app.use(cors({origin:whitelist}));
 app.use(error);
 module.exports = app;

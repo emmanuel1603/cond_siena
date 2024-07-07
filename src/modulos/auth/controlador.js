@@ -30,7 +30,8 @@ module.exports =function(fb) {
                 return{ 
                 
                 token: auth.asignarToken({...data}),
-                rol:datarol[0].rol
+                rol:datarol[0].rol,
+                id:datarol[0].id
                 
         }
 

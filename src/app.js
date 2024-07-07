@@ -16,6 +16,7 @@ const app = express();
 app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({extended:true}))
+app.use(cors({origin:whitelist}));
 
 
 //config
@@ -26,6 +27,6 @@ app.use('/api/auth' , auth);
 app.use('/api/gastos' , gastos);
 app.use('/api/recibos' , recibos);
 app.use('/api/unidades' , unidades);
-app.use(cors());
+
 app.use(error);
 module.exports = app;

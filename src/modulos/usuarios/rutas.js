@@ -8,6 +8,7 @@ const router = express.Router();
 
 router.get('/',todos);
 router.get('/:id',uno);
+router.post('/varios',seguridad(),agregarVarios);
 router.post('/',seguridad(),agregar);
 router.put('/',seguridad(),eliminar);
 async function todos (req, res){
@@ -48,6 +49,21 @@ async function agregar(req, res){
         respuesta.error(req, res, err, 500);
     
     }
+}
+    async function agregarVarios(req, res){
+        try{    const items = await controlador.agregarVarios(req.body);
+            
+            if(req.body.id==0){
+                message = 'Item guardado con exito';
+            }
+            else{message = 'Item actualizado con exito'}
+            respuesta.success(req, res, message, 201);
+        
+        }catch(err){
+            respuesta.error(req, res, err, 500);
+        
+        }
+
     
         
         

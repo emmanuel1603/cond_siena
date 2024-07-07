@@ -7,6 +7,8 @@ const unidades = require('./modulos/unidades/rutas.js');
 const auth = require('./modulos/auth/rutas.js');
 const morgan = require ('morgan');
 const error = require('./red/errors');
+const cors = require('cors');
+const whitelist =['http://localhost:3000','http://localhost:3001'];
 
 const app = express();
 //middleware
@@ -24,5 +26,6 @@ app.use('/api/auth' , auth);
 app.use('/api/gastos' , gastos);
 app.use('/api/recibos' , recibos);
 app.use('/api/unidades' , unidades);
+app.use(cors());
 app.use(error);
 module.exports = app;

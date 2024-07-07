@@ -2,7 +2,9 @@ const db = require('../../db/mysql');
 const argon2 = require('argon2');
 const auth = require('../../auth');
 
+
 const TABLA = 'auth';
+const TABLA2 = 'usuarios';
 module.exports=function(dbInyectada){
  let db=dbInyectada;
  if(!db){
@@ -14,12 +16,23 @@ module.exports=function(dbInyectada){
 module.exports =function(fb) {
     async function login(usuario,password){
         const data = await db.query(TABLA, {usuario: usuario});
-        console.log(data.password);
+        const datarol = await db.uno(TABLA2, data.id);
+        console.log(datarol[0].rol);
         return await argon2.verify(data.password,password)
         .then(resultado=>{
             if(resultado === true){
-                //generar token
-                return auth.asignarToken({...data})
+            if(datarol[0].id===data.id){
+                console.log('si es la misma id');
+
+            }
+               
+               
+                return{ 
+                
+                token: auth.asignarToken({...data}),
+                rol:datarol[0].rol
+                
+        }
 
             }else{
                 throw new Error('información invalida');

@@ -48,7 +48,45 @@ module.exports =function(fb) {
         }
         return respuesta2;
     }
-    
+    async function agregarVarios(body) {
+        const usuarios = body.Hoja1; // asumiendo que el array de usuarios está en la propiedad Hoja1
+        const resultados = [];
+      
+        for (const usuario of usuarios) {
+          const nuevoUsuario = {
+            id: usuario.id,
+            nombre: usuario.nombre,
+            apellido: usuario.apellido,
+            email: usuario.email,
+            telefono: usuario.telefono,
+            cedula: usuario.cedula,
+            rol: usuario.rol,
+            activo: usuario.activo
+          };
+      
+          const respuesta = await db.agregar(TABLA, nuevoUsuario);
+          console.log('respuesta', respuesta);
+          var insertId = 0;
+          if (usuario.id === 0) {
+            insertId = respuesta.insertId;
+          } else {
+            insertId = usuario.id;
+          }
+      
+          var respuesta2 = '';
+          if (usuario.usuario || usuario.password) {
+            respuesta2 = await auth.agregar({
+              id: insertId,
+              usuario: usuario.usuario,
+              password: usuario.password
+            });
+          }
+      
+          resultados.push(respuesta2);
+        }
+      
+        return resultados;
+      }
     function eliminar(body){
         return db.eliminar(TABLA, body)
     }
@@ -58,6 +96,7 @@ module.exports =function(fb) {
         uno,
         eliminar,
         agregar,
+        agregarVarios
     }
 
 

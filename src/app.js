@@ -8,7 +8,7 @@ const auth = require('./modulos/auth/rutas.js');
 const morgan = require ('morgan');
 const error = require('./red/errors');
 const cors = require('cors');
-const whitelist =['http://localhost:3000','http://localhost:3001'];
+const whitelist =['http://localhost:3000','https://condominio-siena.vercel.app/'];
 
 const app = express();
 //middleware

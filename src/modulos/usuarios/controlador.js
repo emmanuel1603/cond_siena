@@ -1,7 +1,8 @@
 const db = require('../../db/mysql');
 const auth = require('../auth');
+const TABLA = 'unidades';
 
-const TABLA = 'usuarios';
+const TABLA2 = 'usuarios';
 module.exports=function(dbInyectada){
  let db=dbInyectada;
  if(!db){
@@ -16,7 +17,8 @@ module.exports =function(fb) {
     }
     
     function uno(id){
-        return db.uno(TABLA, id)
+      return db.join(TABLA,TABLA2,id)
+      //  return db.uno(TABLA, id)
     }
     async function agregar(body){
         const usuario ={

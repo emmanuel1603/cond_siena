@@ -107,11 +107,25 @@ function join(tableName1, tableName2, id) {
       });
     });
   }
+
+
+  function joinTodos(tableName1, tableName2) {
+    return new Promise((resolve, reject) => {
+      conection.query(`
+        SELECT ${tableName1}.*, ${tableName2}.*
+        FROM ${tableName1}
+        INNER JOIN ${tableName2} ON ${tableName1}.usuario_id = ${tableName2}.id
+      `, (error, result) => {
+        return error ? reject(error) : resolve(result);
+      });
+    });
+  }
 module.exports={
     todos,
     uno,
     agregar,
     eliminar,
     query,
-    join
+    join,
+    joinTodos
 }

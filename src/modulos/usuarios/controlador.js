@@ -13,7 +13,7 @@ module.exports=function(dbInyectada){
 
 module.exports =function(fb) {
     function todos(){
-        return db.todos(TABLA)
+        return db.joinTodos(TABLA,TABLA2)
     }
     
     function uno(id){

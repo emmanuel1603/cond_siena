@@ -31,7 +31,7 @@ module.exports =function(fb) {
             rol:body.rol,
             activo:body.activo
         }
-        const respuesta = await db.agregar(TABLA, usuario);
+        const respuesta = await db.agregar(TABLA2, usuario);
         console.log('respuesta',respuesta)
         var insertId = 0;
         if(body.id==0){

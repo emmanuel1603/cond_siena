@@ -112,7 +112,7 @@ function join(tableName1, tableName2, id) {
   function joinTodos(tableName1, tableName2) {
     return new Promise((resolve, reject) => {
       conection.query(`
-        SELECT ${tableName1}.*, ${tableName2}.*
+        SELECT ${tableName1}.*, ${tableName2}.*, ${tableName2}.id AS id_unidad
         FROM ${tableName1}
         INNER JOIN ${tableName2} ON ${tableName1}.usuario_id = ${tableName2}.id
       `, (error, result) => {

@@ -48,7 +48,7 @@ module.exports =function(fb) {
 
             })
         }
-        return respuesta2;
+        return insertId;
     }
     async function agregarVarios(body) {
         const usuarios = body.Hoja1; // asumiendo que el array de usuarios está en la propiedad Hoja1

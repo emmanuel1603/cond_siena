@@ -40,7 +40,7 @@ async function agregar(req, res){
     try{    const items = await controlador.agregar(req.body);
         
         if(req.body.id==0){
-            message = 'Item guardado con exito';
+            message = items;
         }
         else{message = 'Item actualizado con exito'}
         respuesta.success(req, res, message, 201);

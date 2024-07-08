@@ -90,7 +90,7 @@ module.exports =function(fb) {
         return resultados;
       }
     function eliminar(body){
-        return db.eliminar(TABLA, body)
+        return db.eliminar(TABLA2, body)
     }
 
     return{

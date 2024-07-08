@@ -96,10 +96,22 @@ function query (tabla, consulta){
 
 }
 
+function join(tableName1, tableName2, id) {
+    return new Promise((resolve, reject) => {
+      conection.query(`
+        SELECT ${tableName1}.*, ${tableName2}.*
+        FROM ${tableName1}
+        INNER JOIN ${tableName2} ON ${tableName1}.usuario_id = ${tableName2}.id
+        WHERE ${tableName1}.usuario_id = ?`, [id], (error, result) => {
+        return error? reject(error) : resolve(result[0]);
+      });
+    });
+  }
 module.exports={
     todos,
     uno,
     agregar,
     eliminar,
-    query
+    query,
+    join
 }

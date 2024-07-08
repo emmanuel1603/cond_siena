@@ -10,7 +10,7 @@ router.get('/',todos);
 router.get('/:id',uno);
 router.post('/varios',seguridad(),agregarVarios);
 router.post('/',agregar,seguridad());
-router.put('/',seguridad(),eliminar);
+router.put('/',eliminar,seguridad());
 async function todos (req, res){
     try{  
     const items = await controlador.todos();
